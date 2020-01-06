@@ -52,6 +52,7 @@ public class AuthController {
 	
 	@RequestMapping(value = "/updateUser", method = RequestMethod.PUT)
 	public ModelAndView onUpdateUser(UserVO param, HttpServletRequest request) throws Exception {
+		logger.debug("###################### {}", param);
 		return CommonJson.getSuccessJsonModel(userService.doUpdateUserHandle(param));
 	}
 	
