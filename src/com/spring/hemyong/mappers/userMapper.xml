@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="user">
+	<select id="selectUserList" resultType="com.spring.hemyong.vo.UserVO">
+		SELECT 
+			"ID",
+			"PASSWORD",
+			"NAME",
+			"BIRTH",
+			"ISSOLAR",
+			"SEX",
+			"MOBILE",
+			"EMAIL"
+		FROM
+            "TB_USER"
+    </select>
+
+	<select id="selectUserInfo" parameterType="String" resultType="com.spring.hemyong.vo.UserVO">
+		SELECT 
+			"ID",
+			"PASSWORD",
+			"NAME",
+			"BIRTH",
+			"ISSOLAR",
+			"SEX",
+			"MOBILE",
+			"EMAIL"
+		FROM
+            "TB_USER"
+        WHERE "ID" = #{id}
+    </select>
+    
+	<select id="createUser" parameterType="com.spring.hemyong.vo.UserVO">
+		INSERT INTO
+			"TB_USER" 
+		VALUES (
+			#{id},
+			#{password},
+			#{name},
+			#{birth},
+			#{isSolar},
+			#{sex},
+			#{mobile},
+			#{email}
+		)
+    </select>
+    
+    <select id="updateUser" parameterType="com.spring.hemyong.vo.UserVO">
+		UPDATE "TB_USER" 
+		SET 
+			"PASSWORD" 	= #{password},
+			"NAME" 		= #{name},
+			"BIRTH" 	= #{birth},
+			"ISSOLAR" 	= #{isSolar},
+			"SEX" 		= #{sex},
+			"MOBILE" 	= #{mobile},
+			"EMAIL" 	= #{email}
+		WHERE "ID" = #{id}
+    </select>
+
+    <select id="deleteUser" parameterType="String">
+    	DELETE FROM
+    		"TB_USER"
+    	WHERE "ID" = #{id}
+    </select>
+</mapper>   
