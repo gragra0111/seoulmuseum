@@ -46,28 +46,30 @@ GF.namespace = function(ns_string) {
 GF.namespace('GF.ajax');
 GF.ajax = {
 	get: function(url, params, successCallback, errorCallback) {
-		this._request('GET', url, params, 'application/x-www-form-urlencoded; charset=utf-8', successCallback, errorCallback);
+		this._request('GET', url, null, successCallback, errorCallback);
 	},
 	post: function(url, params, successCallback, errorCallback) {
-		this._request('POST', url, jQuery.param(params), 'application/x-www-form-urlencoded; charset=utf-8', successCallback, errorCallback);
+		this._request('POST', url, JSON.stringify(params), successCallback, errorCallback);
+//		this._request('POST', url, jQuery.param(params), 'application/x-www-form-urlencoded; charset=utf-8', successCallback, errorCallback);
 	},
 	put: function(url, params, successCallback, errorCallback) {
-		this._request('PUT', url, jQuery.param(params), 'application/json; charset=UTF-8', successCallback, errorCallback);
+		this._request('PUT', url, JSON.stringify(params), successCallback, errorCallback);
 	},
 	delete: function(url, params, successCallback, errorCallback) {
-		this._request('DELETE', url, params, 'application/x-www-form-urlencoded; charset=utf-8', successCallback, errorCallback);
+		this._request('DELETE', url, null, successCallback, errorCallback);
 	},
-	_request: function(method, url, params, contentType, successCallback, errorCallback) {
+	_request: function(method, url, params, successCallback, errorCallback) {
 		$.ajax({
 			type: method,
             url: url,
             async: true,
-            params: params,
-            contentType: contentType,
+            data: params,
+            dataType: 'json',
+            contentType: 'application/json; charset=UTF-8',
             success: function(data, status, xhr) {
 	        	if(status == "success" && xhr.status == 200){
 	            	if(typeof(successCallback) == "function"){
-	                	successCallback(data.hy);
+	                	successCallback(data);
 	            	}
 	        	}
 			},
