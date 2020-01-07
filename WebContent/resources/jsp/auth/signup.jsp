@@ -20,30 +20,19 @@
 
 	<script type="text/javascript" language="javascript">
 
-    function validate() {
+    // 아이디
+    function validate_id() {
       var re_id = /^[a-z]+[a-z0-9]{4,13}$/g; //아이디 유효성검사 정규식
-      var re_pw = /^(?=.*[a-zA-Z0-9])(?=.*[~!@#$%^*]).{8,15}$/;  //패스워드 유효성검사 정규식
-      var re_name = /\s/g; // 띄어쓰기 정규식
-      var re_phone = /[^0-9]/g; // 숫자만 정규식
-      var re_email1 = /^[a-z]+[a-z0-9]{4,13}$/g;
-      var re_email2 = /[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 
       var id = document.getElementById("in_id");
-      var pw1 = document.getElementById("in_pw1");
-      var pw2 = document.getElementById("in_pw2");
-      var name = document.getElementById("in_name");
-      var phone = document.getElementById("in_phone");
-      var email1 = document.getElementById("in_email1");
-      var email2 = document.getElementById("in_email2");
-
       var str = document.getElementsByClassName("warn");
 
-      // 아이디
       if(!check(re_id, id)){
         var id_fail = "첫글자 영문(소문자)+숫자 4~13자로 입력하세요.";
 
         str[0].innerText = id_fail;
         str[0].style.display = 'block';
+        str[0].className = "warn";
       }else{
         var id_success = "사용 가능한 ID입니다.";
 
@@ -51,18 +40,33 @@
         str[0].style.display = 'block';
         str[0].className += " green";
       }
+    }
 
-      // 비밀번호
+    // 비밀번호
+    function validate_pw() {
+      var re_pw = /^(?=.*[a-zA-Z0-9])(?=.*[~!@#$%^*]).{8,15}$/;  //패스워드 유효성검사 정규식
+
+      var pw1 = document.getElementById("in_pw1");
+      var str = document.getElementsByClassName("warn");
+
+
       if(!check(re_pw, pw1)){
         var pw_fail = "영문, 숫자, 특수문자를 조합하여 8~15자로 입력하세요.";
 
         str[1].innerText = pw_fail;
         str[1].style.display = 'block';
       }else{
-        str[1].style.display = 'none';
+        str[1].style.display = '사용 가능합니다.';
       }
+    }
 
-      // 이름
+    // 이름
+    function validate_name() {
+      var re_name = /\s/g; // 띄어쓰기 정규식
+
+      var name = document.getElementById("in_name");
+      var str = document.getElementsByClassName("warn");
+
       if(check(re_name, name)){
         var name_fail = "공백없이 입력하세요.";
 
@@ -84,8 +88,15 @@
           str[2].className = "warn";
         }
       }
+    }
 
-      // 휴대폰번호
+    // 휴대폰번호
+    function validate_phone() {
+      var re_phone = /[^0-9]/g; // 숫자만 정규식
+
+      var phone = document.getElementById("in_phone");
+      var str = document.getElementsByClassName("warn");
+
       if(check(re_phone, phone)){
         var phone_fail = "숫자만 입력하세요.";
 
@@ -113,39 +124,66 @@
           str[3].className += ' green';
         }
       }
-
-      // 이메일_아이디
-      if(!check(re_email1, email1)){
-        var email1_fail = "아이디 다시 입력하세요.";
-
-        str[4].innerText = email1_fail;
-        str[4].style.display = 'block';
-        str[4].className = 'warn';
-      }else{
-        var email1_success = "사용 가능합니다.";
-
-        str[4].innerText = email1_success;
-        str[4].style.display = 'block';
-        str[4].className += ' green';
-      }
-
-      // 이메일_주소
-      if(!check(re_email1, email2)){
-        var email1_fail = "아이디 다시 입력하세요.";
-
-        str[4].innerText = email1_fail;
-        str[4].style.display = 'block';
-        str[4].className = 'warn';
-      }else{
-        var email1_success = "사용 가능합니다.";
-
-        str[4].innerText = email1_success;
-        str[4].style.display = 'block';
-        str[4].className += ' green';
-      }
-
-      //
     }
+
+    // 이메일 셀렉트
+    function setEmail(emailValue){
+      var email_id = document.getElementById("in_email1");
+      var email_addr = document.getElementById("in_email2");
+
+      if(emailValue == "notSelected"){
+        email_addr.readOnly = false;
+        email_addr.value = "";
+        email_addr.focus();
+      }
+      else{
+        email_addr.readOnly =  true;
+        email_addr.value = emailValue;
+      }
+    }
+
+    // 이메일
+    function validate_email1() {
+      var re_email1 = /^[a-z]+[a-z0-9]{4,13}$/g;
+      var email1 = document.getElementById("in_email1");
+      var str = document.getElementsByClassName("warn");
+
+      if(!check(re_email1, email1)){
+        var email1_fail = "올바른 이메일 주소를 입력하세요.";
+
+        str[4].innerText = email1_fail;
+        str[4].style.display = 'block';
+        str[4].className = 'warn';
+      }else{
+        var email1_success = "사용 가능합니다.";
+
+        str[4].innerText = email1_success;
+        str[4].style.display = 'block';
+        str[4].className += ' green';
+      }
+    }
+    // 이메일 주소
+    function validate_email2() {
+      var re_email2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+      var email2 = document.getElementById("in_email2");
+      var str = document.getElementsByClassName("warn");
+      var email_addr = document.getElementById("email_select").value;
+
+      if(!check(re_email2, email2)){
+        var email2_fail = "올바른 이메일 주소를 입력하세요.";
+
+        str[4].innerText = email2_fail;
+        str[4].style.display = 'block';
+        str[4].className = 'warn';
+      }else{
+        var email2_success = "사용 가능합니다.";
+
+        str[4].innerText = email2_success;
+        str[4].style.display = 'block';
+        str[4].className += ' green';
+      }
+    }
+
 
     function check(re, what) {
      if(re.test(what.value)) {
@@ -184,11 +222,6 @@
        str.innerText = '비밀번호가 일치하지 않습니다.';
        str.className = "warn";
      }
-   }
-
-   function emailSelect() {
-     var email_select = document.getElementById('email_select');
-     var email_value = email_select.value;
    }
 
 	$(document).ready(function() {
@@ -245,18 +278,18 @@
 			<h2>서울미술관의 모든 서비스를 이용해보세요.</h2>
 			<div class="form">
 				<span class="title star">계정 아이디</span>
-        <input type="text" placeholder="첫글자 영문(소문자)+숫자 4~13자" id="in_id" onkeyup="validate()" onfocusout="esential(this)">
+        <input type="text" placeholder="첫글자 영문(소문자)+숫자 4~13자" id="in_id" onkeyup="validate_id()" onfocusout="esential(this)">
         <span class="warn">필수 입력값입니다.</span>
 			</div>
 			<div class="form pw">
 				<span class="title star">비밀번호</span>
-        <input type="password" placeholder="영문, 숫자, 특수문자(~,!,@,$,^,*) 8~15자로 대소문자 구분" id="in_pw1" onfocusout="esential(this)" onkeyup="validate();duplication()">
-        <input type="password" placeholder="비밀번호 확인" id="in_pw2" onfocusout="esential(this)">
+        <input type="password" placeholder="영문, 숫자, 특수문자(~,!,@,$,^,*) 8~15자로 대소문자 구분" id="in_pw1" onfocusout="esential(this)" onkeyup="validate_pw()">
+        <input type="password" placeholder="비밀번호 확인" id="in_pw2" onfocusout="esential(this)" onkeyup="duplication()">
         <span class="warn">필수 입력값입니다.</span>
 			</div>
 			<div class="form">
 				<span class="title star">성명</span> <input type="text"
-					placeholder="띄어쓰기 없이 입력" id="in_name" onkeyup="validate()"> <span class="warn">필수
+					placeholder="띄어쓰기 없이 입력" id="in_name" onfocusout="esential(this)" onkeyup="validate_name()"> <span class="warn">필수
 					입력값입니다.</span>
 			</div>
 			<div class="form birth">
@@ -311,7 +344,7 @@
 							<option value="26">26</option>
 							<option value="27">27</option>
 							<option value="28">28</option>
-							<option value="29">19</option>
+							<option value="29">29</option>
 							<option value="30">30</option>
 							<option value="31">31</option>
 						</select>
@@ -342,16 +375,17 @@
 			</div>
 			<div class="form">
 				<span class="title star">휴대폰번호</span> <input type="number"
-					placeholder="하이픈(-)을 제외하고 입력" id="in_phone" onkeyup="validate()"> <span class="warn">필수
+					placeholder="하이픈(-)을 제외하고 입력" id="in_phone" onkeyup="validate_phone()"> <span class="warn">필수
 					입력값입니다.</span>
 			</div>
 			<div class="form email">
 				<span class="title">이메일주소</span>
 				<div class="clear">
-					<input type="text" id="in_email1" onkeyup="validate()"> <input type="text" id="in_email2" onkeyup="validate()">
+					<input type="text" id="in_email1" onkeyup="validate_email1()"> <input type="text" id="in_email2" onkeyup="validate_email2()">
 					<div class="selectbox">
-						<label for="email">직접입력</label> <select id="email_select">
-							<option value="직접입력" hidden>직접입력</option>
+						<label for="email">직접입력</label>
+            <select id="email_select" onchange="setEmail(email_select.options[this.selectedIndex].value)">
+							<option value="notSelected">직접입력</option>
 							<option value="naver.com">네이버</option>
 							<option value="daum.net">다음</option>
 							<option value="gmail.com">지메일</option>
@@ -362,10 +396,6 @@
         <span class="warn">필수 입력값입니다.</span>
 			</div>
 			<button class="done">제출하기</button>
-			<button class="done" id="read">테스트</button>
-			<button class="done" id="create">테스트등록</button>
-			<button class="done" id="update">테스트수정</button>
-			<button class="done" id="delete">테스트삭제</button>
 			</section>
 		</div>
 	</div>
