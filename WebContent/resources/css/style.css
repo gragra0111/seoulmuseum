@@ -213,12 +213,15 @@ nav .nav li + li{margin-top: 20px;}
 #wrap.signup section .form .title + input{margin-top: 10px;}
 #wrap.signup section .form input::placeholder{font-size: 14px;color:#bbb}
 #wrap.signup section .form input:focus{border-bottom:1px solid #fdb827}
-#wrap.signup section .form .wran{display: block;margin: 5px 0;font-size: 12px;color:#cc3333;text-align: right;}
+#wrap.signup section .form .warn{display: none;margin: 5px 0;font-size: 12px;color:#cc3333;text-align: right;}
+#wrap.signup section .form .warn.green{color:green}
 #wrap.signup section .form.pw input + input{margin-top: 10px;}
 #wrap.signup section .form.birth div.clear{margin-top: 10px;}
 #wrap.signup section .form.birth input[type="number"]{display: block;float: left;width: 100px;padding: 5px;}
 #wrap.signup section .form input[type="number"]::-webkit-inner-spin-button{-webkit-appearance: none; margin: 0;}
 #wrap.signup section .form .selectbox{float: left;position: relative;width: 80px;border-bottom:1px solid #dee0e1;margin-left: 10px;}
+#wrap.signup section .form .selectbox:focus,
+#wrap.signup section .form .selectbox:active{border-bottom: 1px solid #fdb827;}
 #wrap.signup section .form .selectbox:before{content: "";position: absolute;top: 50%;right: 15px;width: 0;height: 0;margin-top: -1px;border-left: 5px solid transparent;border-right: 5px solid transparent;border-top:5px solid #7492c5}
 #wrap.signup section .form .selectbox label{position: absolute;top: 1px;left: 5px;padding: 5px;color:#3c4652;line-height: 1.5;font-weight: bold;}
 #wrap.signup section .form select{display: block;width: 100%;height: 40px;border: 0;font-size: 18px;font-weight: bold;color:#3c4652;opacity: 0;}
