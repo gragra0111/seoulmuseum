@@ -35,7 +35,6 @@
 				<ul class="clear">
 					<li><a href="auth/login">로그인</a></li>
 					<li><a href="auth/signup">회원가입</a></li>
-					<li><a href="auth/getUser">회원가입2</a></li>
 					<li><a href="#">고객센터</a></li>
 					<li class="em"><a href="#">서울특별시청</a></li>
 				</ul>

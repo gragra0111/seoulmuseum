@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -45,13 +46,13 @@ public class AuthController {
 	}
 	
 	@RequestMapping(value = "/createUser", method = RequestMethod.POST)
-	public ModelAndView onCreateUser(UserVO param, HttpServletRequest request) throws Exception {
+	public ModelAndView onCreateUser(@RequestBody UserVO param, HttpServletRequest request) throws Exception {
 		int result = userService.doCreateUserHandle(param);
 		return CommonJson.getSuccessJsonModel(result);
 	}
 	
 	@RequestMapping(value = "/updateUser", method = RequestMethod.PUT)
-	public ModelAndView onUpdateUser(UserVO param, HttpServletRequest request) throws Exception {
+	public ModelAndView onUpdateUser(@RequestBody UserVO param, HttpServletRequest request) throws Exception {
 		logger.debug("###################### {}", param);
 		return CommonJson.getSuccessJsonModel(userService.doUpdateUserHandle(param));
 	}
