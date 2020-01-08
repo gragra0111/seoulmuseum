@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.hemyong.common.CommonSqlSessionTemplate;
 import com.spring.hemyong.dao.UserDAO;
+import com.spring.hemyong.param.UserLoginParam;
 import com.spring.hemyong.vo.UserVO;
 
 @Repository
@@ -51,6 +52,11 @@ public class UserDAOImpl extends CommonSqlSessionTemplate implements UserDAO {
 	@Override
 	public int doDeleteUser(String id) throws Exception {
 		return getSqlSessionTemplate().delete("user.deleteUser", id);
+	}
+
+	@Override
+	public UserVO doProcessLogin(UserLoginParam param) {
+		return getSqlSessionTemplate().selectOne("user.selecetProcessLogin", param);
 	}
 
 }

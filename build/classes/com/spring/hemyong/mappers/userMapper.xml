@@ -65,4 +65,20 @@
     		"TB_USER"
     	WHERE "ID" = #{id}
     </select>
+    
+    <select id="selecetProcessLogin" parameterType="com.spring.hemyong.param.UserLoginParam" resultType="com.spring.hemyong.vo.UserVO">
+		SELECT 
+			"ID",
+			"PASSWORD",
+			"NAME",
+			"BIRTH",
+			"ISSOLAR",
+			"SEX",
+			"MOBILE",
+			"EMAIL"
+		FROM
+            "TB_USER"
+        WHERE "ID" = #{id}
+          AND "PASSWORD" = #{password}
+    </select>
 </mapper>   
