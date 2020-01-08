@@ -33,6 +33,8 @@
         str[0].innerText = id_fail;
         str[0].style.display = 'block';
         str[0].className = "warn";
+
+        id.focus();
       }else{
         var id_success = "사용 가능한 ID입니다.";
 
@@ -224,47 +226,70 @@
      }
    }
 
+   // ajax POST
+   function submitUserInfo() {
+     var param_id = document.getElementById("in_id").value;
+     var param_pw = document.getElementById("in_pw2").value;
+     var param_name = document.getElementById("in_name").value;
+     var param_year = document.getElementById("in_year").value;
+     var param_month = document.getElementById("in_month").value;
+     var param_mobile = document.getElementById("in_phone").value;
+     var param_day = document.getElementById("in_day").value;
+     var param_birth = param_year + param_month + param_day;
+     var param_solar = document.getElementById("in_solar").value;
+     var param_sex;
+     var param_email1 = document.getElementById("in_email1").value;
+     var param_email2 = document.getElementById("in_email2").value;
+     var param_email = param_email1 + "@" + param_email2;
+
+     var radio_chk = document.getElementsByName("radio_sex");
+     var cnt = 0;
+     for(var i=0; i<radio_chk.length; i++){
+       if(radio_chk[i].checked == true){
+         param_sex = radio_chk[i].value;
+         cnt ++;
+       }
+     }
+
+     GF.ajax.post(
+       "/auth/createUser",
+       {
+         id : param_id,
+         password : param_pw,
+         name : param_name,
+         birth : param_birth,
+         isSolar : param_solar,
+         sex : param_sex,
+         mobile : param_mobile,
+         email : param_email
+       },
+       function(result){
+         alert('success!');
+       },
+       function(){
+         alert('정확한 정보를 입력해주세요.');
+       }
+     );
+    // $.ajax({
+    //   type: "POST",
+    //   url: "/auth/createUser",
+    //   data: {
+    //     id : "",
+    //     sss : "",
+    //     ddd : ""
+    //   },
+    //   dataType: 'json',
+    //   contentType: 'application/json; charset=UTF-8',
+    //   success: function(result) {
+    //     alert(result);
+    //   },
+    //   error: function(jqXHR, textStatus, errorThrown ) {
+    //     alert(jqXHR);
+    //   }
+    // });
+    }
+
 	$(document).ready(function() {
-	    GF.ajax.get("/auth/getUserList", {}, function(result) {
-	    });
-
-	    $("#read").click(function() {
-	    	GF.ajax.get("/auth/getUserInfo/test", {}, function(result) {
-			});
-		});
-	    $("#create").click(function() {
-			var param = {
-	    		id: "test",
-	    		password: "test",
-	    		name: "test",
-	    		birth: "test",
-	    		isSolar: true,
-	    		sex: "M",
-	    		mobile: "01012345678",
-	    		email: "mail@naver.com"
-	    	}
-	    	GF.ajax.post("/auth/createUser", param, function(result) {
-			});
-		});
-	    $("#update").click(function() {
-			var param = {
-	    		id: "test",
-	    		password: "test1",
-	    		name: "test1",
-	    		birth: "test1",
-	    		isSolar: true,
-	    		sex: "M",
-	    		mobile: "01012345671",
-	    		email: "mail1@naver.com"
-	    	}
-	    	GF.ajax.put("/auth/updateUser", param, function(result) {
-			});
-		});
-	    $("#delete").click(function() {
-	    	GF.ajax.delete("/auth/deleteUser/test", {}, function(result) {
-			});
-		});
-
 	});
 	</script>
 </head>
@@ -295,36 +320,37 @@
 			<div class="form birth">
 				<span class="title star">생년월일</span>
 				<div class="clear">
-					<input type="number" placeholder="YYYY(4자)">
+					<input type="number" placeholder="YYYY(4자)" id="in_year">
 					<div class="selectbox">
-						<label for="month">월</label> <select id="month">
+						<label for="in_month">월</label>
+            <select id="in_month">
 							<option value="월" hidden>월</option>
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-							<option value="6">6</option>
-							<option value="7">7</option>
-							<option value="8">8</option>
-							<option value="9">9</option>
+							<option value="01">1</option>
+							<option value="02">2</option>
+							<option value="03">3</option>
+							<option value="04">4</option>
+							<option value="05">5</option>
+							<option value="06">6</option>
+							<option value="07">7</option>
+							<option value="08">8</option>
+							<option value="09">9</option>
 							<option value="10">10</option>
 							<option value="11">11</option>
 							<option value="12">12</option>
 						</select>
 					</div>
 					<div class="selectbox">
-						<label for="day">일</label> <select id="day">
+						<label for="in_day">일</label> <select id="in_day">
 							<option value="일" hidden>일</option>
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-							<option value="6">6</option>
-							<option value="7">7</option>
-							<option value="8">8</option>
-							<option value="9">9</option>
+							<option value="01">1</option>
+							<option value="02">2</option>
+							<option value="03">3</option>
+							<option value="04">4</option>
+							<option value="05">5</option>
+							<option value="06">6</option>
+							<option value="07">7</option>
+							<option value="08">8</option>
+							<option value="09">9</option>
 							<option value="10">10</option>
 							<option value="11">11</option>
 							<option value="12">12</option>
@@ -350,10 +376,10 @@
 						</select>
 					</div>
 					<div class="selectbox">
-						<label for="sex">양/음</label> <select id="sex">
+						<label for="in_sex">양/음</label> <select id="in_solar">
 							<option value="양/음" hidden>선택</option>
-							<option value="양력">양력</option>
-							<option value="음력">음력</option>
+							<option value="true">양력</option>
+							<option value="false">음력</option>
 						</select>
 					</div>
 				</div>
@@ -362,14 +388,14 @@
 				<span class="title">성별</span>
 				<div class="radiobox clear">
 					<div class="radio">
-						<input type="radio" id="none" name="sex"> <label
+						<input type="radio" id="none" name="radio_sex" value=""> <label
 							for="none">선택안함</label>
 					</div>
 					<div class="radio">
-						<input type="radio" id="m" name="sex"> <label for="m">남성</label>
+						<input type="radio" id="M" name="radio_sex" value="M"> <label for="M">남성</label>
 					</div>
 					<div class="radio">
-						<input type="radio" id="fe" name="sex"> <label for="fe">여성</label>
+						<input type="radio" id="W" name="radio_sex" value="W"> <label for="W">여성</label>
 					</div>
 				</div>
 			</div>
@@ -395,7 +421,7 @@
 				</div>
         <span class="warn">필수 입력값입니다.</span>
 			</div>
-			<button class="done">제출하기</button>
+			<button class="done" onclick="submitUserInfo();validate()">제출하기</button>
 			</section>
 		</div>
 	</div>
