@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.hemyong.dao.UserDAO;
+import com.spring.hemyong.param.UserLoginParam;
 import com.spring.hemyong.vo.UserVO;
 
 import lombok.extern.slf4j.Slf4j;
@@ -16,6 +17,11 @@ public class UserService {
 	@Autowired
 	private UserDAO userDao;
 
+	public UserVO doProcessLoginHandle(UserLoginParam param) {
+		UserVO user = userDao.doProcessLogin(param);
+        return user;
+	}
+	
 	public List<UserVO> doGetUserListHandle() throws Exception {
 		List<UserVO> list = userDao.getUserList();
 		return list;

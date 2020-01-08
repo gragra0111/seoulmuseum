@@ -67,14 +67,18 @@ GF.ajax = {
             dataType: 'json',
             contentType: 'application/json; charset=UTF-8',
             success: function(data, status, xhr) {
-	        	if(status == "success" && xhr.status == 200){
-	            	if(typeof(successCallback) == "function"){
+	        	if(data.hy.result == "200"){
+	            	if(typeof(successCallback) == "function") {
 	                	successCallback(data);
+	            	}
+	        	} else {
+	        		if(typeof(errorCallback) == "function") {
+	        			errorCallback(data);
 	            	}
 	        	}
 			},
 			error: function (xhr, status, errorThrown) {
-				alert("aJax 통신 오류 : " + xhr.status + " : " + status + " : " + errorThrown);
+				console.log("aJax 통신 오류 : " + xhr.status + " : " + status + " : " + errorThrown);
 				errorCallback(xhr);
 			}
         })
