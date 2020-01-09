@@ -288,3 +288,36 @@ nav .nav li + li{margin-top: 20px;}
 #wrap .paging li.on button,
 #wrap .paging li:hover button{background: #fdb827;color:#fff}
 /* //게시판목록 */
+
+/* 게시판 작성 */
+#wrap .board_wrap .board_write{margin-top: 30px;}
+#wrap .board_wrap .board_write table caption{text-indent: -9999px;}
+#wrap .board_wrap .board_write table{width: 100%; border-top: 3px solid #616161;}
+#wrap .board_wrap .board_write table th{height: 40px;
+    border: 1px solid #dee0e1; line-height: 2.5;vertical-align: middle;}
+    #wrap .board_wrap .board_write table th:first-child{border-left: 0;}
+#wrap .board_wrap .board_write table td{border-bottom: 1px solid #dee0e1;
+    height: 30px;
+    padding: 10px;font-size: 16px;}
+#wrap .board_wrap .board_write table td.input{}
+#wrap .board_wrap .board_write table td.input input{    width: 100%;
+    display: block;
+    padding: 5px 15px;
+    border: 1px solid #dee0e1;
+    border-radius: 5px;
+    font-size: 16px;
+    height: 30px;}
+#wrap .board_wrap .board_write table td.input textarea{width: 100%;
+    border: 1px solid #dee0e1;
+    height: 500px;
+    border-radius: 5px;
+    padding: 16px;
+    font-size: 16px;}
+#wrap .board_wrap .board_write + .btns{text-align: center;margin: 30px 0;}
+#wrap .board_wrap .board_write + .btns ul{display: inline-block;}
+#wrap .board_wrap .board_write + .btns li{float: left}
+#wrap .board_wrap .board_write + .btns li + li{margin-left: 30px;}
+#wrap .board_wrap .board_write + .btns li button{padding: 10px 50px;border-radius: 5px;}
+#wrap .board_wrap .board_write + .btns li button.cancle{}
+#wrap .board_wrap .board_write + .btns li button.submit{background: #fdb827;}
+/* //게시판 작성 */
