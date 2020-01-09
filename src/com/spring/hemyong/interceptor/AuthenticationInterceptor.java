@@ -11,6 +11,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
 	static final Logger logger = LoggerFactory.getLogger(AuthenticationInterceptor.class);
+	
 	// 컨트롤러보다 먼저 수행되는 메서드
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {

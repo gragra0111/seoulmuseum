@@ -67,7 +67,7 @@ GF.ajax = {
             dataType: 'json',
             contentType: 'application/json; charset=UTF-8',
             success: function(data, status, xhr) {
-	        	if(data.hy.result == "200"){
+	        	if(data.hy.result == "100"){
 	            	if(typeof(successCallback) == "function") {
 	                	successCallback(data);
 	            	}
