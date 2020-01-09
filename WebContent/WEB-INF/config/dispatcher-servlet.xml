@@ -64,9 +64,19 @@
 	<!-- Interceptor 설정 -->
 	<mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="/**"/>
-			<mvc:exclude-mapping path="/auth/**"/>
+			<mvc:mapping path="/*"/>
+			<!-- <mvc:exclude-mapping path="/auth/*"/> -->
+			<mvc:exclude-mapping path="/auth/login"/>
+			<mvc:exclude-mapping path="/auth/login/process"/>
+			<mvc:exclude-mapping path="/auth/signup"/>
+			<mvc:exclude-mapping path="/auth/createUser"/>
 			<ref bean="authenticationInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>
+	
+	<!-- MultipartResolver 설정 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	    <property name="maxUploadSize" value="200000000" />
+	    <property name="maxInMemorySize" value="200000000" />
+	</bean>
 </beans>
