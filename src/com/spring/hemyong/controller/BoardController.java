@@ -25,8 +25,13 @@ public class BoardController {
 	private BoardService boardService;
 	
 	@RequestMapping("/list")
-	public ModelAndView onGetSignupPage(HttpServletRequest request) {
+	public ModelAndView onGetBoardListPage(HttpServletRequest request) {
 		return new ModelAndView("/board/list");
+	}
+	
+	@RequestMapping("/write")
+	public ModelAndView onGetBoardWritePage(HttpServletRequest request) {
+		return new ModelAndView("/board/write");
 	}
 	
 	@RequestMapping(value = "/getBoardList", method = RequestMethod.GET)
