@@ -22,7 +22,13 @@
       function submitLoginInfo() {
         var login_id = document.getElementById('login_id').value;
         var login_pw = document.getElementById('login_pw').value;
-        var login_remember = document.getElementById('login_remember').value;
+        var remember_chk = document.getElementById('login_remember');
+
+        if(remember_chk.checked == true){
+          var login_remember = true;
+        }else{
+          login_remember = false;
+        }
 
         GF.ajax.post(
           "login/process",
