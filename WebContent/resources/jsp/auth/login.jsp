@@ -38,7 +38,8 @@
             rememberId: login_remember
           },
           function (){
-            alert(id + '님 환영합니다!');
+            alert(login_id + '님 환영합니다!');
+            location.href = "/main";
           },
           function() {
             alert('로그인이 실패하였습니다. 다시 입력해주세요.');

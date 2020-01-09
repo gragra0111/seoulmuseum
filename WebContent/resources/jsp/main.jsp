@@ -65,7 +65,7 @@
 					</ul>
 					<ul>
 						<li><a href="#">공지사항</a></li>
-						<li><a href="#">문의 및 답변</a></li>
+						<li><a href="board/list">문의 및 답변</a></li>
 						<li><a href="#">대관 문의</a></li>
 					</ul>
 					<ul>
