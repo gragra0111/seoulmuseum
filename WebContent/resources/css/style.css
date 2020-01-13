@@ -22,9 +22,10 @@ nav .nav li + li{margin-top: 20px;}
 #header .top a.logo{display:block;width:193px;height:72px;background:url(../images/logo.png)center left / 75% no-repeat;text-indent:-9999px;}
 #header .top_menu{position:absolute;top:45px;right:0;}
 #header .top_menu ul{}
-#header .top_menu li{float:left;}
-#header .top_menu li + li{position: relative;padding-left: 30px;}
-#header .top_menu li + li:before{content: "";position: absolute;top: 5px;left: 15px;width: 1px;height: 70%;background-color: #bbb}
+#header .top_menu li{position: relative;float:left;}
+#header .top_menu li + li{padding-left: 30px;}
+#header .top_menu li:after{content: "";position: absolute;top: 5px;right:-17px;width: 1px;height: 70%;background-color: #bbb}
+#header .top_menu li:last-child:after{display: none}
 #header .top_menu li a{font-size: 14px;}
 #header .top_menu li.em a{font-weight:500;color:#7490b4}
 #header .bottom{position: relative;width:100%;height:50px;background: #3c4652;}
