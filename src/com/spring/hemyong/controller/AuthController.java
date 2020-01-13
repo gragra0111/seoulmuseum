@@ -31,7 +31,7 @@ public class AuthController {
 	@Autowired
 	private UserService userService;
 	
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	@RequestMapping("/login")
 	public ModelAndView onGetLoginPage(@CookieValue(value="sm_user_login_info", required=false) Cookie cookie) {
 		UserLoginParam param = new UserLoginParam();
 		if(cookie != null) {
@@ -63,13 +63,13 @@ public class AuthController {
 		return CommonJson.getSuccessJsonModel(dto);
 	}
 	
-	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	@RequestMapping("/logout")
 	public ModelAndView onGetLogoutPage(HttpSession session) {
 		session.invalidate();
 		return new ModelAndView("redirect:/");
 	}
 	
-	@RequestMapping(value = "/signup", method = RequestMethod.GET)
+	@RequestMapping("/signup")
 	public ModelAndView onGetSignupPage(HttpServletRequest request) {
 		return new ModelAndView("/auth/signup");
 	}

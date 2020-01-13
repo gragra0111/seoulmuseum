@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import = "com.spring.hemyong.dto.AuthInfoDTO" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -18,12 +17,6 @@
   	<script src="${pageContext.request.contextPath}/resources/js/global.js"></script>
   	<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,400,500,700&display=swap" rel="stylesheet">
   	<title>석파정 서울미술관</title>
-
-<%
-/* AuthInfoDTO dto = (AuthInfoDTO) session.getAttribute("authInfo");
-String id = dto.getId();
-String name = dto.getName(); */
-%>
     <script type="text/javascript">
       function submitLoginInfo() {
         var login_id = document.getElementById('login_id').value;
@@ -43,17 +36,28 @@ String name = dto.getName(); */
             password: login_pw,
             rememberId: login_remember
           },
-          function (){
-        	 <%--  GC.userInfo.id = '<%=id%>';
-        	  GC.userInfo.name = '<%=name%>'; --%>
-            alert(GC.userInfo.name + '님 환영합니다!');
-            location.href = "/main";
+          function(result){
+            alert(result.hy.data.name + '님 환영합니다!');
+            location.href = "/";
           },
           function() {
             alert('로그인이 실패하였습니다. 다시 입력해주세요.');
           }
         );
       }
+      
+	var getCookie = function(name) {
+		var value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+		return value? value[2] : null;
+	};
+	
+	$(function() {
+		var cookie = getCookie("sm_user_login_info");
+		if(cookie) {
+			document.getElementById('login_id').value = cookie;
+			document.getElementById('login_remember').checked = true;
+		}
+	})
     </script>
 </head>
 <body>

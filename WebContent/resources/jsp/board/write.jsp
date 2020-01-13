@@ -2,9 +2,34 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
     <script type="text/javascript">
-    // $(document).ready(function(){
-    //   //작성자
-    //   var bw_writer = document.getElementById('writer');
+	/* function moveList() {
+   		GF.ajax._html('board/list');
+    } */
+    function submitBoardWrite() {
+      var bw_title = document.getElementById('in_title').value;
+      var bw_detail = document.getElementById('in_detail').value;
+      var bw_writer = document.getElementById('writer').innerText;
+      GF.ajax.post(
+        "/board/createBoard",
+        {
+          title: bw_title,
+          detail: bw_detail,
+          writer: bw_writer
+        },
+        function(result) {
+          alert("게시글 등록이 완료되었습니다.");
+          goToPage('board/list');
+        },
+        function(result) {
+          alert("error! 게시글 등록에 실패하였습니다.");
+        }
+      );
+    }
+    
+    $(document).ready(function(){
+    	//작성자
+    	document.getElementById('writer').innerText = GC.userInfo.id;
+	//	var bw_writer = document.getElementById('writer');
     //
     //   bw_writer.innerText = '작성자';
     //
@@ -19,31 +44,7 @@
     //   if (("" + date).length   == 1) { date   = "0" + date;   }
     //
     //   bw_date.innerText = year + '-' + month + '-' + date;
-    // });
-
-	function moveList() {
-   		GF.ajax._html('board/list');
-    }
-    function submitBoardWrite() {
-      var bw_title = document.getElementById('in_title').value;
-      var bw_detail = document.getElementById('in_detail').value;
-
-      GF.ajax.post(
-        "/board/createBoard",
-        {
-          title: bw_title,
-          detail: bw_detail,
-          writer: "임시작성자"
-        },
-        function(result) {
-          alert("게시글 등록이 완료되었습니다.");
-          moveList();
-        },
-        function(result) {
-          alert("error! 게시글 등록에 실패하였습니다.");
-        }
-      );
-    }
+    });
     </script>
     
     <div class="board">
@@ -84,7 +85,7 @@
 	        </div>
 	        <div class="btns">
 	          <ul class="clear">
-	            <li><button class="cancle" onclick="moveList()">취소</button></li>
+	            <li><button class="cancle" onclick="goToPage('board/list')">취소</button></li>
 	            <li><button class="submit" onclick="submitBoardWrite()">등록</button></li>
 	          </ul>
 	        </div>

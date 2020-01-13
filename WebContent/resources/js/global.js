@@ -101,62 +101,6 @@ GF.ajax = {
         })
 	}
 };
-//	var f = {};
-//    var o = {
-//    	async: true
-//    	, dataType: "json"
-//    	, contentType: "application/json; charset=UTF-8"
-//    };
-//	f.init = function(_data) {
-//		o.url = _data.url || o.url;
-//		o.type = _data.type;
-//		o.async = _data.async;
-//		o.param = JSON.stringify(_data.param);
-//		o.contentType = _data.contentType;
-//		o.before = _data.before;
-//		o.success = _data.success;
-//		return f;
-//	};
-//	f.get = function() {
-//		
-//	};
-//	f.post = function() {
-//		
-//	};
-//	f.put = function() {
-//		
-//	};
-//	f.delete = function() {
-//		
-//	};
-//	f._call = function() {
-//		$.ajax({
-//			url         : o.url,
-//			type        : o.type,
-//			async       : o.async,
-//			data        : o.param,
-//			dataType    : o.dataType,
-//			contentType : o.contentType,
-//			beforeSend:function() {
-//	        	if(o.before != null) {
-//	            	if(typeof(o.before) == "function") {
-//	                	o.before();
-//	            	}
-//	        	}
-//			},
-//			error: function (xhr, status, errorThrown) {
-//				alert("aJax 통신 오류 : " + xhr.status + " : " + status + " : " + errorThrown);
-//			},
-//			success: function(data, status, xhr) {
-//	        	if(status == "success" && xhr.status == 200){
-//	            	if(typeof(o.success) == "function"){
-//	                	o.success(data);
-//	            	}
-//	        	}
-//			}
-//		});
-//	};
-//	return f;
 
 //serializeObject
 (function($){
@@ -179,3 +123,7 @@ GF.ajax = {
         return result;
     };
 })(jQuery);
+
+GF.isEmptyObject = function(obj) {
+	return Object.keys(obj).length === 0;
+}
