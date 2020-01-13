@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import = "com.spring.hemyong.dto.AuthInfoDTO" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -18,6 +19,11 @@
   	<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,400,500,700&display=swap" rel="stylesheet">
   	<title>석파정 서울미술관</title>
 
+<%
+/* AuthInfoDTO dto = (AuthInfoDTO) session.getAttribute("authInfo");
+String id = dto.getId();
+String name = dto.getName(); */
+%>
     <script type="text/javascript">
       function submitLoginInfo() {
         var login_id = document.getElementById('login_id').value;
@@ -38,7 +44,9 @@
             rememberId: login_remember
           },
           function (){
-            alert(login_id + '님 환영합니다!');
+        	 <%--  GC.userInfo.id = '<%=id%>';
+        	  GC.userInfo.name = '<%=name%>'; --%>
+            alert(GC.userInfo.name + '님 환영합니다!');
             location.href = "/main";
           },
           function() {

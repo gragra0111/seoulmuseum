@@ -20,7 +20,7 @@ public class BoardVO implements Serializable {
     
 	private String writer;
     
-	private Date date;
+	private Date date = new Date();
     
-	private int count;
+	private int count = 0;
 }

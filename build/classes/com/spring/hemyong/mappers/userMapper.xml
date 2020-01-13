@@ -32,7 +32,7 @@
         WHERE "ID" = #{id}
     </select>
     
-	<select id="createUser" parameterType="com.spring.hemyong.vo.UserVO">
+	<insert id="createUser" parameterType="com.spring.hemyong.vo.UserVO">
 		INSERT INTO
 			"TB_USER" 
 		VALUES (
@@ -45,9 +45,9 @@
 			#{mobile},
 			#{email}
 		)
-    </select>
+    </insert>
     
-    <select id="updateUser" parameterType="com.spring.hemyong.vo.UserVO">
+    <update id="updateUser" parameterType="com.spring.hemyong.vo.UserVO">
 		UPDATE "TB_USER" 
 		SET 
 			"PASSWORD" 	= #{password},
@@ -58,13 +58,13 @@
 			"MOBILE" 	= #{mobile},
 			"EMAIL" 	= #{email}
 		WHERE "ID" = #{id}
-    </select>
+    </update>
 
-    <select id="deleteUser" parameterType="String">
+    <delete id="deleteUser" parameterType="String">
     	DELETE FROM
     		"TB_USER"
     	WHERE "ID" = #{id}
-    </select>
+    </delete>
     
     <select id="selecetProcessLogin" parameterType="com.spring.hemyong.param.UserLoginParam" resultType="com.spring.hemyong.vo.UserVO">
 		SELECT 

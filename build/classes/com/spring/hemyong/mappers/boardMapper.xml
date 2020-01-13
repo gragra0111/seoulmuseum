@@ -24,25 +24,30 @@
 			"DATE",
 			"COUNT"
 		FROM
-            "TB_USER"
+            "TB_BOARD"
         WHERE "NO" = #{no}
     </select>
     
-	<select id="createBoard" parameterType="com.spring.hemyong.vo.BoardVO">
+	<insert id="createBoard" parameterType="com.spring.hemyong.vo.BoardVO">
 		INSERT INTO
-			"TB_USER" 
+			"TB_BOARD" (
+				TITLE,
+				DETAIL,
+				WRITER,
+				DATE,
+				COUNT 
+			)
 		VALUES (
-			#{no},
 			#{title},
 			#{detail},
 			#{writer},
 			#{date},
 			#{count}
 		)
-    </select>
+    </insert>
     
-    <select id="updateBoard" parameterType="com.spring.hemyong.vo.BoardVO">
-		UPDATE "TB_USER" 
+    <update id="updateBoard" parameterType="com.spring.hemyong.vo.BoardVO">
+		UPDATE "TB_BOARD" 
 		SET 
 			"TITLE"		= #{title},
 			"DETAIL" 	= #{detail},
@@ -50,11 +55,11 @@
 			"DATE" 		= #{date},
 			"COUNT" 	= #{count}
 		WHERE "NO" = #{no}
-    </select>
+    </update>
 
-    <select id="deleteBoard" parameterType="Integer">
+    <delete id="deleteBoard" parameterType="Integer">
     	DELETE FROM
-    		"TB_USER"
+    		"TB_BOARD"
     	WHERE "NO" = #{no}
-    </select>
+    </delete>
 </mapper>   
