@@ -1,25 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-  	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-  	<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/favicon.ico">
-  	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/js/bxslider-4-4.2.12/dist/jquery.bxslider.min.css">
-  	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/media.css">
-  	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/reset.css">
-  	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
-  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-  	<script src="${pageContext.request.contextPath}/resources/js/common.js" type="text/javascript"></script>
-  	<script src="${pageContext.request.contextPath}/resources/js/bxslider-4-4.2.12/dist/jquery.bxslider.min.js"></script>
-  	<script src="${pageContext.request.contextPath}/resources/js/global.js"></script>
-  	<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,400,500,700&display=swap" rel="stylesheet">
-  	<title>서울미술관 회원가입</title>
 
 	<script type="text/javascript" language="javascript">
-
+	$(function() {
+		var selectTarget = $('.selectbox select');
+		selectTarget.change(function() {
+			var select_name = $(this).children('option:selected').text();
+			$(this).siblings('label').text(select_name);
+		});
+	});
+	
     // 아이디
     function validate_id() {
       var re_id = /^[a-z]+[a-z0-9]{4,13}$/g; //아이디 유효성검사 정규식
@@ -270,31 +261,12 @@
          alert('정확한 정보를 입력해주세요.');
        }
      );
-    // $.ajax({
-    //   type: "POST",
-    //   url: "/auth/createUser",
-    //   data: {
-    //     id : "",
-    //     sss : "",
-    //     ddd : ""
-    //   },
-    //   dataType: 'json',
-    //   contentType: 'application/json; charset=UTF-8',
-    //   success: function(result) {
-    //     alert(result);
-    //   },
-    //   error: function(jqXHR, textStatus, errorThrown ) {
-    //     alert(jqXHR);
-    //   }
-    // });
     }
 
 	$(document).ready(function() {
 	});
 	</script>
-</head>
-<body>
-	<div id="wrap" class="signup">
+
 		<div class="inner">
 			<header>
 			<h1>서울미술관</h1>
@@ -423,16 +395,3 @@
 			</div>
 			<button class="done" onclick="submitUserInfo();validate()">제출하기</button>
 			</section>
-		</div>
-	</div>
-	<script>
-		$(function() {
-			var selectTarget = $('.selectbox select');
-			selectTarget.change(function() {
-				var select_name = $(this).children('option:selected').text();
-				$(this).siblings('label').text(select_name);
-			});
-		});
-	</script>
-</body>
-</html>

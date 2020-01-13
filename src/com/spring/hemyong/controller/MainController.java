@@ -14,7 +14,7 @@ public class MainController {
 
 	@RequestMapping("/main")
 	public ModelAndView onGetPage(HttpServletRequest request) {
-		log.debug("ID : {}", "main page");
+		log.debug("MainController : {}", "main page");
 		return new ModelAndView("main");
 	}
 }

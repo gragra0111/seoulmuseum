@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import = "com.spring.hemyong.dto.AuthInfoDTO" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -19,8 +20,33 @@
   	<title>석파정 서울미술관</title>
 </head>
 <script type="text/javascript">
+function goToPage(url) {
+	GF.ajax._html(url);
+}
+function _init() {
+	goToPage('main');
+	<%
+		AuthInfoDTO dto = (AuthInfoDTO) session.getAttribute("authInfo");
+		if(dto != null) {
+	%>
+		GC.userInfo.id = '<%=dto.getId()%>';
+		GC.userInfo.name = '<%=dto.getName()%>';
+	<%
+		} else {
+	%>
+		GC.userInfo = {};
+	<%
+		}
+	%>
+	if(GF.isEmptyObject(GC.userInfo)) {
+		$('#header_logout_btn').hide();
+	} else {
+		$('#header_login_btn').hide();
+		$('#header_signup_btn').hide();		
+	}
+}
 $(function() {
-	GF.ajax._html('main');
+	_init();
 })
 </script>
 <body>

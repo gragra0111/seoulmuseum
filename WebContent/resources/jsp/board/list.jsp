@@ -5,7 +5,7 @@
     // var bw_writer = document.getElementById('writer');
     //
     // bw_writer.innerText = '작성자';
-    var pageCount = 3;
+    /* var pageCount = 3;
 	var blockCount = 3;
 	var totalPage = Math.ceil(list.length / pageCount);
 	var totalBlock = Math.ceil(totalPage / blockCount);
@@ -78,7 +78,7 @@
 	        });
 	    }
 	};
-	renderTableAndPagination();
+	renderTableAndPagination(); */
     
     
     
