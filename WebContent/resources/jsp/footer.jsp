@@ -13,11 +13,11 @@
 					</ul>
 				</div>
 				<div class="bottom">
-					<pre>
+					<p>
 서울특별시 종로구 부암동 201번지　　　　대표전화 :  <a href="tel:02-395-0100">02-395-0100</a>　　　　이메일 : <a
 							href="mailto:gpal4434@naver.com" target="_blank">gpal4434@naver.com</a>
-CopyRight 2019 ⓒ 김혜미. All Rights Reserved.
-            </pre>
+<br>CopyRight 2019 ⓒ 김혜미. All Rights Reserved.
+            </p>
 				</div>
 			</div>
 			<div class="right">
@@ -33,14 +33,6 @@ CopyRight 2019 ⓒ 김혜미. All Rights Reserved.
 							href="https://www.youtube.com/channel/UCvXQcbVXOUeEGo9wlTkMQjA"
 							target="_blank" title="유튜브"></a></li>
 					</ul>
-				</div>
-				<div class="bottom">
-					<select name="site" id="site">
-						<option value="FamilySite"><a href="#">Family Site</a></option>
-						<option value="석파정"><a href="#">석파정</a></option>
-						<option value="서울시립미술관"><a href="#">서울시립미술관</a></option>
-						<option value="서울특별시청"><a href="#">서울특별시청</a></option>
-					</select>
 				</div>
 			</div>
 		</div>
