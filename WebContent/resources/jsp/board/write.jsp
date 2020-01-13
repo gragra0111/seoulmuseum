@@ -25,7 +25,7 @@
         }
       );
     }
-    
+
     $(document).ready(function(){
     	//작성자
     	document.getElementById('writer').innerText = GC.userInfo.id;
@@ -33,20 +33,20 @@
     //
     //   bw_writer.innerText = '작성자';
     //
-    //   //작성일
-    //   var today = new Date();
-    //   var year = today.getFullYear();
-    //   var month = (today.getMonth() + 1);
-    //   var date = today.getDate();
-    //   var bw_date = document.getElementById('date');
-    //
-    //   if (("" + month).length == 1) { month = "0" + month; }
-    //   if (("" + date).length   == 1) { date   = "0" + date;   }
-    //
-    //   bw_date.innerText = year + '-' + month + '-' + date;
+      //작성일
+      var today = new Date();
+      var year = today.getFullYear();
+      var month = (today.getMonth() + 1);
+      var date = today.getDate();
+      var bw_date = document.getElementById('date');
+
+      if (("" + month).length == 1) { month = "0" + month; }
+      if (("" + date).length   == 1) { date   = "0" + date;   }
+
+      bw_date.innerText = year + '-' + month + '-' + date;
     });
     </script>
-    
+
     <div class="board">
 	    <section class="board_wrap">
 	      <div class="inner">
