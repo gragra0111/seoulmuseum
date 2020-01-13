@@ -20,6 +20,8 @@ GC.namespace = function(ns_string) {
 	return parent;
 };
 
+//사용자 정보
+GC.namespace('GC.userInfo');
 	
 //전역 함수
 var GF = GF || {};
@@ -76,6 +78,21 @@ GF.ajax = {
 	        			errorCallback(data);
 	            	}
 	        	}
+			},
+			error: function (xhr, status, errorThrown) {
+				console.log("aJax 통신 오류 : " + xhr.status + " : " + status + " : " + errorThrown);
+				errorCallback(xhr);
+			}
+        })
+	},
+	_html: function(url) {
+		$.ajax({
+			type: 'POST',
+            url: url,
+            dataType: 'html',
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            success: function(data, status, xhr) {
+            	$("div#main_container").html(data);
 			},
 			error: function (xhr, status, errorThrown) {
 				console.log("aJax 통신 오류 : " + xhr.status + " : " + status + " : " + errorThrown);
