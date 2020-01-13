@@ -5,12 +5,12 @@
 <mapper namespace="board">
 	<select id="selectBoardList" resultType="com.spring.hemyong.vo.BoardVO">
 		SELECT 
-			"NO",
-			"TITLE",
-			"DETAIL",
-			"WRITER",
-			"DATE",
-			"COUNT"
+			NO,
+			TITLE,
+			DETAIL,
+			WRITER,
+			DATE,
+			COUNT
 		FROM
             "TB_BOARD"
     </select>

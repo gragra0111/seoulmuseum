@@ -21,7 +21,9 @@
     //   bw_date.innerText = year + '-' + month + '-' + date;
     // });
 
-
+	function moveList() {
+   		GF.ajax._html('board/list');
+    }
     function submitBoardWrite() {
       var bw_title = document.getElementById('in_title').value;
       var bw_detail = document.getElementById('in_detail').value;
@@ -35,6 +37,7 @@
         },
         function(result) {
           alert("게시글 등록이 완료되었습니다.");
+          moveList();
         },
         function(result) {
           alert("error! 게시글 등록에 실패하였습니다.");
@@ -43,7 +46,7 @@
     }
     </script>
     
-    <div class="board_list">
+    <div class="board">
 	    <section class="board_wrap">
 	      <div class="inner">
 	        <h1>문의하기</h1>
@@ -81,7 +84,7 @@
 	        </div>
 	        <div class="btns">
 	          <ul class="clear">
-	            <li><button class="cancle">취소</button></li>
+	            <li><button class="cancle" onclick="moveList()">취소</button></li>
 	            <li><button class="submit" onclick="submitBoardWrite()">등록</button></li>
 	          </ul>
 	        </div>
