@@ -19,7 +19,6 @@
   	<title>서울미술관 회원가입</title>
 
 	<script type="text/javascript" language="javascript">
-
     // 아이디
     function validate_id() {
       var re_id = /^[a-z]+[a-z0-9]{4,13}$/g; //아이디 유효성검사 정규식
@@ -264,29 +263,13 @@
          email : param_email
        },
        function(result){
-         alert('success!');
+         alert('회원가입이 완료되었습니다!');
+         location.href="/";
        },
        function(){
          alert('정확한 정보를 입력해주세요.');
        }
      );
-    // $.ajax({
-    //   type: "POST",
-    //   url: "/auth/createUser",
-    //   data: {
-    //     id : "",
-    //     sss : "",
-    //     ddd : ""
-    //   },
-    //   dataType: 'json',
-    //   contentType: 'application/json; charset=UTF-8',
-    //   success: function(result) {
-    //     alert(result);
-    //   },
-    //   error: function(jqXHR, textStatus, errorThrown ) {
-    //     alert(jqXHR);
-    //   }
-    // });
     }
 
 	$(document).ready(function() {
@@ -421,7 +404,7 @@
 				</div>
         <span class="warn">필수 입력값입니다.</span>
 			</div>
-			<button class="done" onclick="submitUserInfo();validate()">제출하기</button>
+			<button class="done" onclick="submitUserInfo()">제출하기</button>
 			</section>
 		</div>
 	</div>
